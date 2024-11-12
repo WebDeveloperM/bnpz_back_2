@@ -186,11 +186,11 @@ class SelectionApiView(APIView):
         if not id:
             return Response({"error": "Id not found"}, status=status.HTTP_400_BAD_REQUEST)
         if id == "all":
-            selections = Selection.objects.filter(language__title=lang, is_active=True)
+            selections = Selection.objects.filter(language__title=lang, is_active=True).order_by("-date_add")
             serializer = SelectionSerializer(selections, many=True)
             return Response(serializer.data)
         try:
-            selections = Selection.objects.filter(category__id=id, language__title=lang, is_active=True)
+            selections = Selection.objects.filter(category__id=id, language__title=lang, is_active=True).order_by("-date_add")
         except:
             return Response({"error": "Id bo'yicha ma'lumot topilmadi"}, status=status.HTTP_404_NOT_FOUND)
         serializer = SelectionSerializer(selections, many=True)
@@ -206,12 +206,12 @@ class SelectionArchiveApiView(APIView):
             return Response({"error": "Id not found"}, status=status.HTTP_400_BAD_REQUEST)
         print(id, lang, "--------------------")
         if id == "all":
-            selections = Selection.objects.filter(language__title=lang, is_active=False)
+            selections = Selection.objects.filter(language__title=lang, is_active=False).order_by("-date_add")
             print(selections, "111111111111111")
             serializer = SelectionSerializer(selections, many=True)
             return Response(serializer.data)
         try:
-            selections = Selection.objects.filter(category__id=id, language__title=lang, is_active=False)
+            selections = Selection.objects.filter(category__id=id, language__title=lang, is_active=False).order_by("-date_add")
         except:
             return Response({"error": "Id bo'yicha ma'lumot topilmadi"}, status=status.HTTP_404_NOT_FOUND)
         serializer = SelectionSerializer(selections, many=True)
