@@ -47,6 +47,10 @@ urlpatterns = [
     path("check-captcha/", CheckCaptchaView.as_view()),
     
     path("politica/<str:lang>", PoliticaApiView.as_view()),
+
     path("story/<str:lang>", StoryApiView.as_view()),
 
+    path("cons-link/<str:lang>", ConsLinkApiView.as_view()),
+    path("cons-photo/", ConsPhotoApiView.as_view()),
+    path("cons-video/", ConsVideoApiView.as_view()),
 ]

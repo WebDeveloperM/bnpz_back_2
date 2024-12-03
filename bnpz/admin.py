@@ -111,8 +111,12 @@ class LocalDocsAdmin(admin.ModelAdmin):
     list_filter = ['title', 'file']
 
 
+
 admin.site.register(Lider)
 admin.site.register(Captcha)
 admin.site.register(Politica)
 admin.site.register(Story)
-admin.site.register(Test)
+
+admin.site.register(ConsLink)
+admin.site.register(ConsPhoto)
+admin.site.register(ConsVideo)

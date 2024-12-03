@@ -412,3 +412,27 @@ class StoryApiView(APIView):
         story = Story.objects.filter(language__title=kwargs['lang']).last()
         serializer = StorySerializer(story)
         return Response(serializer.data)
+
+
+class ConsLinkApiView(APIView):
+    @staticmethod
+    def get(request, *args, **kwargs):
+        links = ConsLink.objects.filter(language__title=kwargs['lang'])
+        serializer = ConsLinkSerializer(links, many=True)
+        return Response(serializer.data)
+    
+
+class ConsPhotoApiView(APIView):
+    @staticmethod
+    def get(request, *args, **kwargs):
+        photos = ConsPhoto.objects.all()
+        serializer = ConsPhotoSerializer(photos, many=True)
+        return Response(serializer.data)
+    
+
+class ConsVideoApiView(APIView):
+    @staticmethod
+    def get(request, *args, **kwargs):
+        videos = ConsVideo.objects.all()
+        serializer = ConsVideoSerializer(videos, many=True)
+        return Response(serializer.data)

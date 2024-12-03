@@ -481,8 +481,37 @@ class Story(models.Model):
         verbose_name_plural = "9.5. Xronika"
 
 
-class Test(models.Model):
-    file = models.FileField(verbose_name="Murojaat natijasi fayl shaklida", null=True, blank=True)
-    
-        
+class ConsLink(models.Model):
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name="Til", null=True, blank=True)
+    number = models.IntegerField(verbose_name="Nomer: ")
+    title = models.CharField(max_length=200, verbose_name="Website nomi")
+    link = models.TextField(verbose_name="Link uchun joy", null=True, blank=True)
+    def __str__(self):
+        return f"{self.number} - {self.language}-link"
+
+    class Meta:
+        verbose_name = 'Konstitutsiya link'
+        verbose_name_plural = '9.7 Konstitutsiya link'
+
+
+class ConsPhoto(models.Model):
+    img_1 = models.ImageField(verbose_name="Rasm", null=True, blank=True)
+    def __str__(self):
+        return f"{self.id }-rasm"
+
+    class Meta:
+        verbose_name = 'Konstitutsiya foto'
+        verbose_name_plural = '9.8 Konstitutsiya foto'
+
+
+class ConsVideo(models.Model):
+    link = models.TextField(verbose_name="Youtube link qo'ying", null=True, blank=True)
+    def __str__(self):
+        return f"{self.id }-video"
+
+    class Meta:
+        verbose_name = 'Konstitutsiya video'
+        verbose_name_plural = '9.9 Konstitutsiya video'
+
+
         

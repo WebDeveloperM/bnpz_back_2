@@ -130,3 +130,21 @@ class StorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Story
         fields = "__all__"
+
+
+class ConsLinkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ConsLink
+        fields = "__all__"
+
+
+class ConsPhotoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ConsPhoto
+        fields = "__all__"
+
+
+class ConsVideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ConsVideo
+        fields = "__all__"
